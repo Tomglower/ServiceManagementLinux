@@ -1,0 +1,75 @@
+    <Window xmlns="https://github.com/avaloniaui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:vm="using:AvaloniaP2.ViewModels"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+            x:Class="AvaloniaP2.Views.MainWindow"
+            x:DataType="vm:MainWindowViewModel"
+            Icon="/Assets/avalonia-logo.ico"
+            Title="AvaloniaP2"
+            Background="Black"
+            WindowStartupLocation="CenterScreen">
+        
+        <Design.DataContext>
+            <vm:MainWindowViewModel/>
+        </Design.DataContext>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollViewer >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
+                        <TextBox Watermark="Search..." Text="{Binding SearchText}" Margin="5" Width="1200"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="1">
+                        <TextBlock Text="Unit" Width="800" TextAlignment="Left" Foreground="Beige" />
+                        <TextBlock Text="Load" Width="140" TextAlignment="Center" Foreground="Beige" />
+                        <TextBlock Text="Active" Width="160" TextAlignment="Center" Foreground="Beige" />
+                        <TextBlock Text="Sub" Width="90" TextAlignment="Center" Foreground="Beige" />
+                        <TextBlock Text="Control" Width="160" TextAlignment="Center" Foreground="Beige" />
+                    </StackPanel>
+
+                    <ItemsControl ItemsSource="{Binding FilteredServicesList}" Grid.Row="2">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <TextBlock Text="{Binding Unit}" Width="800" TextAlignment="Left" />
+                                    <TextBlock Text="{Binding Load}" Width="150" TextAlignment="Center" />
+                                    <TextBlock Text="{Binding Active}" Width="150" TextAlignment="Center" />
+                                    <TextBlock Text="{Binding Sub}" Width="100" TextAlignment="Center" />
+                                    <Button Content="Start" Foreground="Green" Command="{Binding StartServiceCommand}" CommandParameter="{Binding Unit}" />
+                                    <Button Content="Stop"  Foreground="Red" Command="{Binding StopServiceCommand}" CommandParameter="{Binding Unit}"/>
+                                    <Button Content="Restart"  Foreground="Yellow" Command="{Binding RestartServiceCommand}" CommandParameter="{Binding Unit}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </ScrollViewer>
+            <StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="10">
+            <Button Content="Open logs" Command="{Binding OpenFileCommand}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
+ <!-- <TextBox Name = "pass" Watermark="Enter root password" Text="{Binding SudoPass}"  Width="200" Margin="5"  />
+                <Button Content="Enter" Command="{Binding SudoUpdate}"/> -->
+            <Button Content="Root Password" Command="{Binding SudoUpdate}"/>
+
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
+    <Button Content="Create Service" Command="{Binding CreateServiceCommand}" />
+</StackPanel>
+        </Grid> 
+    </Window>

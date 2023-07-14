@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:AvaloniaP2.Views"
+        x:Class="AvaloniaP2.Views.CreateServiceDialog"
+        Width="400"
+        Height="200"
+        Title="Service Name"
+                WindowStartupLocation="CenterOwner">
+  <Window.Owner>
+        <local:MainWindow/>
+    </Window.Owner>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="ServiceNameTextBox" Width="200" Height="30" Margin="10" Grid.Row="0" Watermark="Enter Service Name"/>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Grid.Row="1">
+            <Button Content="OK" Width="80" Click="OK_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Grid.Row="1">
+            <Button Content="Cancel" Width="80" Click="Cancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
