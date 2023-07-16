@@ -10,6 +10,7 @@
         <local:MainWindow/>
     </Window.Owner>
     <Grid>
+        <!-- RowDefinitions="2*, Auto" =) -->
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
             <RowDefinition Height="Auto" />

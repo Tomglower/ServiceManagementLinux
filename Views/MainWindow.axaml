@@ -23,6 +23,7 @@
 
             <ScrollViewer >
                 <Grid>
+                    <!-- RowDefinitions="Auto,Auto,Auto,Auto" =) -->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -44,6 +45,8 @@
 
                     <ItemsControl ItemsSource="{Binding FilteredServicesList}" Grid.Row="2">
                         <ItemsControl.ItemTemplate>
+                            <!-- можно вынести в отдельный View, который будет биндиться с ViewModel-->
+                            <!-- как я и писал, Service -> ServiceViewModel -> ServiceView -->
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="5">
                                     <TextBlock Text="{Binding Unit}" Width="800" TextAlignment="Left" />

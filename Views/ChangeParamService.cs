@@ -62,6 +62,7 @@ namespace AvaloniaP2.Views
 
         private List<string> GetList()
         {
+            // тоже, бизнес-логику лучше во ViewModels.
             List<string> customParameters = new List<string>();
 
             Process process = new Process();

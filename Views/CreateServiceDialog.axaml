@@ -10,6 +10,14 @@
         <local:MainWindow/>
     </Window.Owner>
     <Grid>
+        
+        <!-- в Avalonia, в отличии от WPF, есть элегантный и краткий способ задавать Row/ColumnDefinitions: -->
+        <!--
+            <Grid
+                RowDefinitions="2*, Auto">
+                ...
+            </Grid>
+        -->
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
             <RowDefinition Height="Auto" />

@@ -12,6 +12,8 @@
     </Window.Owner>
     
     <Grid>
+        <!-- легче было бы Grid'ом разрулить и не плясать с Left || Right. + при небольшой ширине окна они друг -->
+        <!-- на друга налезать будут -->
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Spacing="10">
             <TextBlock Text="Unit:"/>
 <TextBox x:Name="UnitBox" Width="300" Height="400" AcceptsReturn="True" Text="{Binding UnitData, Mode=TwoWay}"/>
