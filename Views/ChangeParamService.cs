@@ -22,7 +22,7 @@ namespace AvaloniaP2.Views
         public List<string> Targets { get; set; }
         public string SelectedTarget { get; set; }
 
-        public ChangeParamService()
+        public ChangeParamService(List<string> targets)
         {
             InitializeComponent();
             DataContext = this;
@@ -34,14 +34,19 @@ namespace AvaloniaP2.Views
             _UnitBox.Text = "[Unit]\nDescription=";
             _ServiceBox.Text = "[Service]\n";
 
-            Targets = GetList();
-            SelectedTarget = Targets.FirstOrDefault();
-
-            foreach (string target in Targets)
+            if (targets != null && targets.Any())
             {
-                _TargetComboBox.Items.Add(target);
+                Targets = targets;
+                SelectedTarget = Targets.FirstOrDefault();
+
+                foreach (string target in Targets)
+                {
+                    _TargetComboBox.Items.Add(target);
+                }
             }
         }
+
+
 
         private void InitializeComponent()
         {
@@ -60,28 +65,6 @@ namespace AvaloniaP2.Views
             this.Close();
         }
 
-        private List<string> GetList()
-        {
-            // тоже, бизнес-логику лучше во ViewModels.
-            List<string> customParameters = new List<string>();
 
-            Process process = new Process();
-            process.StartInfo.FileName = "/bin/bash";
-            process.StartInfo.Arguments = "-c \"systemctl list-units --type=target | tail -n +2 | head -n -5\"";
-            process.StartInfo.RedirectStandardOutput = true;
-            process.Start();
-            string output = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
-
-            string[] lines = output.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string line in lines)
-            {
-                string[] parts = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                string target = parts[0];
-                customParameters.Add(target);
-            }
-
-            return customParameters;
-        }
     }
 }
