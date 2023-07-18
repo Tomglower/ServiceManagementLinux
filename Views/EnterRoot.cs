@@ -17,8 +17,6 @@ namespace AvaloniaP2.Views
         public EnterRoot()
         {
             InitializeComponent();
-
-            // авалония сама генерирует поля для именованных компонентов. Можешь смело обращаться к Rootpass и т.д.
             Root_pass = this.FindControl<TextBox>("Rootpass");
         }
 
