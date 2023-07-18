@@ -9,20 +9,8 @@
   <Window.Owner>
         <local:MainWindow/>
     </Window.Owner>
-    <Grid>
-        
-        <!-- в Avalonia, в отличии от WPF, есть элегантный и краткий способ задавать Row/ColumnDefinitions: -->
-        <!--
-            <Grid
-                RowDefinitions="2*, Auto">
-                ...
-            </Grid>
-        -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
+    <Grid  RowDefinitions="2*, Auto">
+    
         <TextBox x:Name="ServiceNameTextBox" Width="200" Height="30" Margin="10" Grid.Row="0" Watermark="Enter Service Name"/>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Grid.Row="1">
