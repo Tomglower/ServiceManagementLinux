@@ -9,13 +9,7 @@
   <Window.Owner>
         <local:MainWindow/>
     </Window.Owner>
-    <Grid>
-        <!-- RowDefinitions="2*, Auto" =) -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
+    <Grid RowDefinitions="2*, Auto">
         <TextBox x:Name="Rootpass" Width="200" Height="30" Margin="10" Grid.Row="0" Watermark="Enter Root password"/>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Grid.Row="1">
