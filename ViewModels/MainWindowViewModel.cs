@@ -83,24 +83,9 @@ namespace AvaloniaP2.ViewModels
         }
         private async Task RootPassword()
         {
-            // ты пишешь View логику внутри ViewModel слоя, что нарушает паттерн MVVM и несет за собой ряд неудобств.
-            // ViewModel созданы для бизнес логики и всё взаимодействие с View происходит в основном через абстракцию.
-            // По хорошему все ViewModel'и у тебя должны быть написаны так, чтобы они могли быть библиотекой, не имеющей 
-            // никакого отношения к фреймворку для отрисовки (например, Avalonia)
             var dialog = new EnterRoot();
-            // вот, соответсвенно, и первая проблема, с которой ты сам и столкнулся. Ты никак не можешь получить окно
-            // внутри ViewModel слоя. И тебе приходится плясать со статикой. И получается так, что ты создаешь вьюмодель,
-            // пихаешь её внутрь окна, окно инициализируется, и только потом, по нажатию на кнопку, ты ищешь это же окно
-            // где-то в недрах статики Avalonia. Если бы этот метод был привязан не к кнопке, а, например, вызывался до
-            // того, как ты открыл MainWindow окно, то ты бы наткнулся на null reference exception
-            // и ничего бы тебе это не дало
             await dialog.ShowDialog((Application.Current.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.MainWindow);
             _sudopass = dialog.RootPassword;
-            Console.WriteLine(_sudopass);
-            // с помощью ReactiveUi можно решить эту проблему с помощью уже написанной абстракции:
-            // погугли ReactiveUi Interactions
-
-            // P.S. за async хвалю
         }
         private async Task CreateServiceDialog()
         {
